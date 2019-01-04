@@ -1,0 +1,1 @@
+﻿{"ContextClassName":"BloggingContext","DefaultDacpacSchema":null,"IdReplace":false,"IncludeConnectionString":true,"OutputPath":"","ProjectRootNamespace":"DbFirst.Repo","SelectedToBeGenerated":0,"Tables":["dbo.Blog","dbo.Post"],"UseDatabaseNames":false,"UseFluentApiOnly":false,"UseHandleBars":true,"UseInflector":true}
