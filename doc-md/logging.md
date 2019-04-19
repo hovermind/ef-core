@@ -1,5 +1,5 @@
 * Serilog for EF Core in ASP.NET Core
-    * [When ASP.NET Core Uses Default ILoggerFactory](#When-ASP-NET-Core-Uses-Default-ILoggerFactory)
+    * [When ASP.NET Core Uses Default ILoggerFactory](#when-aspnet-core-uses-default-iloggerfactory)
     * [When ASP.NET Core Uses SerilogLoggerFactory](#When-ASP=NET-Core-Uses-SerilogLoggerFactory)
 * [Logging EF Core with Default ILoggerFactory](#) (Independent of ASP.NET Core)
 
@@ -81,6 +81,34 @@ public class MySampleDbContext : DbContext
     {  
         optionsBuilder.UseLoggerFactory(this.loggerFactory);  
     }  
+}
+```
+
+## When ASP.NET Core Uses SerilogLoggerFactory
+* Courtesy: [this](https://dennisroche.com/ef-core-logging-with-serilog/)
+* ASP.NET Core uses [Serilog.AspNetCore](https://github.com/serilog/serilog-aspnetcore)
+* Serilog.AspNetCore replaces the ILoggerFactory
+
+**Note:***
+The Serilog implementation of SerilogLoggerFactory is registered in the container, so when your configuring the EF Core DbContext inject the ILoggerFactory and pass it into options builder.
+
+`BloggingContext.cs`
+```cs
+public class BloggingContext : DbContext
+{
+    public BloggingContext(DbContextOptions<BloggingContext> options, ILoggerFactory loggerFactory)
+        : base(options)
+    {
+        _loggerFactory = loggerFactory;
+    }
+    
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder
+            .UseLoggerFactory(_loggerFactory);
+    }
+
+    private readonly ILoggerFactory _loggerFactory;
 }
 ```
 
