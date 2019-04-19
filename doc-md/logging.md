@@ -1,6 +1,9 @@
-## Serilog for EF Core in ASP.NET Core
+* Serilog for EF Core in ASP.NET Core
+    * [When ASP.NET Core Uses Default ILoggerFactory](#When-ASP-NET-Core-Uses-Default-ILoggerFactory)
+    * [When ASP.NET Core Uses SerilogLoggerFactory](#When-ASP=NET-Core-Uses-SerilogLoggerFactory)
+* [Logging EF Core with Default ILoggerFactory](#) (Independent of ASP.NET Core)
 
-#### When ASP.NET Core Uses Default ILoggerFactory
+## When ASP.NET Core Uses Default ILoggerFactory
 Courtesy: [this](https://dejanstojanovic.net/aspnet/2018/october/logging-ef-core-actions-to-a-file-using-serilog/)   
 
 **1. Dependency**
